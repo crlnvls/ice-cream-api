@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const bodyParser = require("body-parser");
 
 const data = require("./data");
 
@@ -8,6 +9,7 @@ const app = express();
 
 // Tell the app to listend to JSON bodies on POST requests
 app.use(express.json());
+// app.use(bodyParser.json());
 
 // Add 'headers' to each response, saying that we're okay with sharing resources with others
 app.use(cors());
@@ -63,7 +65,7 @@ app.get("/flavours/:id", (req, res) => {
 
 // post = create new info
 app.post("/flavours", (req, res) => {
-  console.log(req.body);
+  // console.log(req);
 
   const newFlavour = req.body;
   newFlavour["id"] = data.length + 1;
